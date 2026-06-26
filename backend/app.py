@@ -17,6 +17,16 @@ def create_app():
     with app.app_context():
         db.create_all()
         
+        # Auto-seed admin user if it doesn't exist (for Vercel / empty SQLite DBs)
+        from models.admin import Admin
+        import bcrypt
+        if not Admin.query.filter_by(username='admin').first():
+            hashed_pw = bcrypt.hashpw('admin123'.encode('utf-8'), bcrypt.gensalt())
+            new_admin = Admin(username='admin', password_hash=hashed_pw.decode('utf-8'))
+            db.session.add(new_admin)
+            db.session.commit()
+            print("Auto-seeded default admin user (admin:admin123)")
+        
     return app
 
 app = create_app()
