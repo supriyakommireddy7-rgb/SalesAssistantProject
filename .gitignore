@@ -6,3 +6,7 @@ backend/instance/
 .vscode/
 .idea/
 .DS_Store
+backend/credentials.json
+backend/token.json
+credentials.json
+token.json

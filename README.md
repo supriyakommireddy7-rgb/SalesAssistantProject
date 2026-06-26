@@ -33,8 +33,16 @@ A full-stack CRM application designed to automate real estate sales emails using
    - MySQL connection details.
    - `JWT_SECRET`
    - `GEMINI_API_KEY`
-5. Place your Gmail API `credentials.json` in the `backend/` directory.
+5. **Configure Gmail OAuth 2.0:**
+   - Go to the [Google Cloud Console](https://console.cloud.google.com/).
+   - Create a project and enable the **Gmail API**.
+   - Set up the OAuth consent screen.
+   - Create **OAuth 2.0 Client ID** credentials (choose "Desktop app" or "Web application").
+   - Download the JSON file and rename it to `credentials.json`.
+   - Place `credentials.json` directly inside the `backend/` directory (`backend/credentials.json`).
 6. Run the application: `python app.py`
+   - *First Run:* The application will automatically open a Google Login page in your browser. After you authenticate and grant permissions, it will generate a `token.json` file in the `backend/` directory. 
+   - *Future Runs:* The app will seamlessly reuse `token.json` and automatically refresh it when it expires. You won't have to log in again manually.
 
 ### Frontend Setup
 1. Navigate to the `frontend/` directory.
