@@ -9,4 +9,5 @@ backend/instance/
 backend/credentials.json
 backend/token.json
 credentials.json
-token.json
+token.jsondist
+dist-ssr
